@@ -643,8 +643,6 @@ app.get("/allData", function (req, res) {
 
 
 
-
-
 app.get("/shops", function (req, res) {
     res.send(shops);
 });
@@ -663,8 +661,9 @@ app.get("/shop/:id", function (req, res) {
 
 app.post("/shop/add", function (req, res) {
     let body = req.body;
-    console.log("bodyPost : ",body);
-    let find = shops.find((obj1) => obj1.shopId === body.id);
+    console.log("bodyPost shop add: ",body);
+    let find = shops.find((obj1) => obj1.shopId == body.shopId);
+    console.log("Find : ", find)
     if (find) {
         res.send("Id Already Exist");
     } else {
